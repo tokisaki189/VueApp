@@ -44,7 +44,7 @@ app.delete("/deletenote/:id", (req, res) => {
   let id = req.params.id;
   con.connect(function () {
     var sql = `DELETE FROM notes WHERE id='${id}';`;
-    con.qtuery(sql, function (err, result) {
+    con.query(sql, function (err, result) {
       if (err) throw err;
     });
   });

@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import Header from "./components/Typo.vue";
+import Header from "./components/Chat.vue";
 import notes from "./components/notes.vue";
 import BigComp from "./components/BigComp.vue";
 import SmallComp from "./components/SmallComp.vue";
