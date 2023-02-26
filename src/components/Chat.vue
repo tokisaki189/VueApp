@@ -1,22 +1,30 @@
 <template>
-  <div>
-<form> 
-  <input type="text" name="">
-</form>
-  </div>
+  <LoginChat v-if="!showChat" @login="getUsername"></LoginChat>
+  <ChatBox v-if="showChat"></ChatBox>
 </template>
 <script>
+import ChatBox from "./ChatBox.vue"
+import LoginChat from "./LoginChat.vue"
+
 export default {
+  components: {
+    LoginChat,
+    ChatBox
+  },
   name: "Header-section",
   data() {
     return {
-      something: "",
+      showChat: true,
+      username: ""
     };
   },
-  computed: {
-    something2() {
-      return this.something.split("").reverse().join("");
+  methods: {
+    getUsername(username) {
+      this.username = username;
+      this.showChat = true;
     },
+  },
+  computed: {
   },
 };
 </script>

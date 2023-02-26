@@ -113,7 +113,7 @@ export default {
 }
 .note-container {
   padding-top: 3rem;
-  height: 37rem;
+  height: 31.4rem;
   background-color: rgb(255, 255, 255);
   display: flex;
   gap: 2rem;

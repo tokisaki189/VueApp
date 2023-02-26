@@ -13,8 +13,6 @@
     </div>
   </div>
   <div>
-    <div v-for="(item, index) in items" :key="index" :style="{ backgroundColor: getRandomColor }" class="color-box">{{
-      item }}</div>
   </div>
 </template>
 
@@ -77,7 +75,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000000;
-  margin-top: 60px;
 }
 
 .container {
@@ -88,7 +85,7 @@ body {
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  height: 53.3rem;
+  height: 47.6rem;
   background-color: rgb(90, 255, 142);
   width: 180px;
 }
@@ -112,4 +109,5 @@ body {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-}</style>
+}
+</style>
