@@ -1,8 +1,13 @@
 <template>
   <div class="container">
     <div class="button-container">
-      <button class="tab-menu" v-for="(tab, index) in tabs" :key="tab" :style="{ backgroundColor: getTabColor(index) }"
-        @click="(selected = tab), (activeTabIndex = index)">
+      <button
+        class="tab-menu"
+        v-for="(tab, index) in tabs"
+        :key="tab"
+        :style="{ backgroundColor: getTabColor(index) }"
+        @click="(selected = tab), (activeTabIndex = index)"
+      >
         {{ tab }}
       </button>
     </div>
@@ -12,30 +17,53 @@
       </KeepAlive>
     </div>
   </div>
-  <div>
-  </div>
+  <div></div>
 </template>
 
 <script>
-import notes from "./components/notes.vue";
-import Chat from "./components/Chat.vue";
-import BigComp from "./components/BigComp.vue";
+import notesSQL from "./components/notesSQL.vue";
+import ChatFirebase from "./components/ChatFirebase.vue";
+import notesFirebase from "./components/notesFirebase.vue";
+import todoAppVue3 from "./components/todoAppVue3.vue";
 /* import FormSection from './components/FormSection.vue' */
 export default {
   name: "App",
   data() {
     return {
-      tabs: ["notes", "Chat", "BigComp"],
-      selected: "Chat",
+      tabs: ["notesSQL", "ChatFirebase", "notesFirebase", "todoAppVue3"],
+      selected: "todoAppVue3",
       activeTabIndex: null,
-      items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10'],
-      colors: ['#FFC0CB', '#FFA07A', '#FFD700', '#ADFF2F', '#7FFFD4', '#87CEFA', '#6A5ACD', '#FF69B4', '#FF6347', '#FF4500']
+      items: [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "Item 5",
+        "Item 6",
+        "Item 7",
+        "Item 8",
+        "Item 9",
+        "Item 10",
+      ],
+      colors: [
+        "#FFC0CB",
+        "#FFA07A",
+        "#FFD700",
+        "#ADFF2F",
+        "#7FFFD4",
+        "#87CEFA",
+        "#6A5ACD",
+        "#FF69B4",
+        "#FF6347",
+        "#FF4500",
+      ],
     };
   },
   components: {
-    notes,
-    Chat,
-    BigComp,
+    notesSQL,
+    ChatFirebase,
+    notesFirebase,
+    todoAppVue3,
     /* FormSection */
   },
   methods: {
@@ -44,13 +72,13 @@ export default {
     },
     getTabColor(index) {
       if (index === this.activeTabIndex) {
-        return 'white';
+        return "white";
       } else {
-        return 'rgb(90, 255, 142)';
+        return "rgb(90, 255, 142)";
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>

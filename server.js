@@ -16,6 +16,41 @@ app.listen(3000, function () {
   console.log("Server is running on localhost:3000");
 });
 
+// todo section for todo application
+
+app.get("/todos", function (req, res) {
+  con.query("SELECT * FROM todos", function (err, result) {
+    if (err) throw err;
+    console.log(result);
+    res.send(result);
+  });
+});
+app.post("/todos", function (req, res) {
+  let newTodo = req.body;
+  let newContent = newTodo.content;
+  console.log(newContent);
+  con.connect(function () {
+    let sql = "INSERT INTO todos (content) VALUES ('" + newContent + "')";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+    });
+  });
+});
+app.delete("/deletetodo/:id", (req, res) => {
+  let id = req.params.id;
+  con.connect(function () {
+    var sql = `DELETE FROM todos WHERE id='${id}';`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+    });
+  });
+});
+
+
+
+
+// note section for note application by sql
+
 app.get("/notes", (req, res) => {
   con.query("SELECT * FROM notes", function (err, result) {
     if (err) throw err;
@@ -23,6 +58,7 @@ app.get("/notes", (req, res) => {
     res.send(result);
   });
 });
+
 app.post("/addnote", (req, res) => {
   let newItem = req.body;
   console.log("new:" + newItem.title + " " + newItem.content);
@@ -45,6 +81,17 @@ app.delete("/deletenote/:id", (req, res) => {
   con.connect(function () {
     var sql = `DELETE FROM notes WHERE id='${id}';`;
     con.query(sql, function (err, result) {
+      if (err) throw err;
+    });
+  });
+});
+app.put("/edittodo/:id", (req, res) => {
+  let content = req.body.content;
+  let id = req.params.id;
+  var query = "UPDATE todos SET content=? WHERE id=?";
+  console.log(content + id);
+  con.connect(function () {
+    con.query(query, [content, id], (err, results, fields) => {
       if (err) throw err;
     });
   });
